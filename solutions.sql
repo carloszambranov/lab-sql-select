@@ -38,3 +38,16 @@ JOIN sales s on t.title_id = s.title_id
 GROUP BY a.au_id, a.au_lname, a.au_fname
 ORDER BY total DESC
  LIMIT 3
+
+ Challenge 4
+ SELECT 
+    a.au_id AS 'AUTHOR ID',
+    a.au_lname AS 'LAST NAME',
+    a.au_fname AS 'FIRST NAME',
+    IFNULL (t.ytd_sales,0) AS TOTAL
+FROM authors a
+left JOIN titleauthor ta ON a.au_id = ta.au_id
+LEFT JOIN titles t ON ta.title_id = t.title_id
+LEFT JOIN sales s on t.title_id = s.title_id
+GROUP BY a.au_id, a.au_lname, a.au_fname
+ORDER BY total DESC
